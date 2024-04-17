@@ -3,18 +3,26 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import Contador from './components/contador'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import Home from './components/pages/home'
+import Contacto from './components/pages/contacto'
+import Nosotros from './components/pages/nosotros'
+import Productos from './components/pages/productos'
+import NotFound from './components/pages/notfound'
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
-    <div>
-      <h1>Hola desde react</h1>
-      <br />
-      <Contador />
-      
-
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path='/' element={ <Home /> } />
+        <Route path='/contacto' element={ <Contacto /> } />
+        <Route path='/nosotros' element={ <Nosotros /> } />
+        <Route path='/productos' element={ <Productos /> } />
+        <Route path='*' element={ <NotFound /> } />
+      </Routes>
+    </BrowserRouter>
   )
 }
 
