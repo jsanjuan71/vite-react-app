@@ -9,6 +9,8 @@ import Contacto from './components/pages/contacto'
 import Nosotros from './components/pages/nosotros'
 import Productos from './components/pages/productos'
 import NotFound from './components/pages/notfound'
+import ProductoDetalle from './components/ProductoDetalle'
+import DetalleProducto from './components/detalleProducto'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -20,6 +22,7 @@ function App() {
         <Route path='/contacto' element={ <Contacto /> } />
         <Route path='/nosotros' element={ <Nosotros /> } />
         <Route path='/productos' element={ <Productos /> } />
+        <Route path='/productos/:sku' element={ <DetalleProducto /> } />
         <Route path='*' element={ <NotFound /> } />
       </Routes>
     </BrowserRouter>
