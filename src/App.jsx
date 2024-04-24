@@ -11,6 +11,7 @@ import Productos from './components/pages/productos'
 import NotFound from './components/pages/notfound'
 import ProductoDetalle from './components/ProductoDetalle'
 import DetalleProducto from './components/detalleProducto'
+import ListaDeTareas from './components/listaDeTareas'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -23,6 +24,8 @@ function App() {
         <Route path='/nosotros' element={ <Nosotros /> } />
         <Route path='/productos' element={ <Productos /> } />
         <Route path='/productos/:sku' element={ <DetalleProducto /> } />
+        <Route path='/lista' element={ <ListaDeTareas /> } />
+        
         <Route path='*' element={ <NotFound /> } />
       </Routes>
     </BrowserRouter>
