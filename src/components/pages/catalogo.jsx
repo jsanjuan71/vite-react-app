@@ -1,6 +1,7 @@
 import Menu from "../menu"
 import { useEffect, useState   } from "react"
 import { Card, Button, Container, Row, Col } from 'react-bootstrap'
+import TarjetaProducto from "../tarjetaProducto"
 
 function Catalogo() {
     const [listaProductos, setListaProductos] = useState([])
@@ -23,19 +24,8 @@ function Catalogo() {
             {
                 listaProductos.map((producto, indice) => {
                     return(
-                        <Col>
-                            <Card style={{ width: '18rem' }}>
-                                <Card.Img variant="top" src={producto.thumbnail} />
-                                <Card.Body>
-                                <Card.Title>
-                                    {producto.title}
-                                    <br/>
-                                    <sub className="text-muted">{producto.brand}</sub>
-                                </Card.Title>
-                                <Card.Text>{producto.description}</Card.Text>
-                                <Button variant="primary">Go somewhere</Button>
-                                </Card.Body>
-                            </Card>
+                        <Col key={indice} xxl={3} lg={4} md={6} xs={12} className="d-flex mb-3">
+                            <TarjetaProducto producto={producto} className="h-100" />
                         </Col>
                     )
                 })
