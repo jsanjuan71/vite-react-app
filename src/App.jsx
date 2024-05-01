@@ -14,6 +14,9 @@ import DetalleProducto from './components/detalleProducto'
 import ListaDeTareas from './components/listaDeTareas'
 import DetalleTarea from './components/detalleTarea'
 import ListaTareas from './components/listaTareas'
+import ProductosBs from './components/pages/productosBootstrap'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Catalogo from './components/pages/catalogo'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -24,11 +27,12 @@ function App() {
         <Route path='/' element={ <Home /> } />
         <Route path='/contacto' element={ <Contacto /> } />
         <Route path='/nosotros' element={ <Nosotros /> } />
-        <Route path='/productos' element={ <Productos /> } />
+        <Route path='/productos' element={ <ProductosBs /> } />
         <Route path='/productos/:sku' element={ <DetalleProducto /> } />
         <Route path='/lista' element={ <ListaDeTareas /> } />
         <Route path='/lista/:id' element={ <DetalleTarea /> } />
         <Route path='/tareas' element={ <ListaTareas /> } />
+        <Route path='/catalogo' element={ <Catalogo /> } />
         
         <Route path='*' element={ <NotFound /> } />
       </Routes>
