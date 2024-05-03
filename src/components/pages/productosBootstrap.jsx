@@ -29,6 +29,7 @@ function ProductosBs() {
                                 <TarjetaProducto 
                                     producto={producto}
                                     className="h-100"
+                                    clickAgregar={ () => console.log("Agregado", producto) }
                                 />
                             </Col>
                         )

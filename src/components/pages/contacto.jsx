@@ -1,7 +1,7 @@
 import {Link} from 'react-router-dom'
 import Menu from '../menu';
 
-function Contacto() {
+function Contacto({...props}) {
   return (
     <>
       <Menu />

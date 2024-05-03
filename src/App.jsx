@@ -17,10 +17,9 @@ import ListaTareas from './components/listaTareas'
 import ProductosBs from './components/pages/productosBootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Catalogo from './components/pages/catalogo'
+import Carrito from './components/pages/carrito'
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <BrowserRouter>
       <Routes>
@@ -33,7 +32,7 @@ function App() {
         <Route path='/lista/:id' element={ <DetalleTarea /> } />
         <Route path='/tareas' element={ <ListaTareas /> } />
         <Route path='/catalogo' element={ <Catalogo /> } />
-        
+        <Route path='/carrito' element={ <Carrito /> } />
         <Route path='*' element={ <NotFound /> } />
       </Routes>
     </BrowserRouter>

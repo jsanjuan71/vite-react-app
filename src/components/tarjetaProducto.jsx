@@ -11,7 +11,7 @@ function TarjetaProducto({producto, ...props}) {
       <Card.Footer>
             <label className="text-success"> ${producto.price}</label>
             <br/>
-            <Button variant="primary">Agregar</Button>
+            <Button variant="primary" onClick={ ()=> props.clickAgregar(producto) }>Agregar</Button>
         </Card.Footer>
     </Card>
   );

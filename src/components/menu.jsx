@@ -1,7 +1,9 @@
 import {Link} from 'react-router-dom';
 import './menu.css'
+import { Cart } from 'react-bootstrap-icons';
 
 function Menu() {
+
     return (
         <nav>
             <ul>
@@ -14,7 +16,10 @@ function Menu() {
                 </li>
 
                 <li>
-                    <Link to={"/productos"}>Tienda</Link>
+                    <Link to={"/catalogo"}>Tienda</Link>
+                </li>
+                <li>
+                    <Link to={"/carrito"}>Carrito<Cart/></Link>
                 </li>
 
                 <li>

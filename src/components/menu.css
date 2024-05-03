@@ -1,3 +1,10 @@
 nav ul li a {
     color: black;
 }
+nav ul{
+    display: flex;
+    justify-content: center;
+}
+nav ul li {
+    justify-content: center;
+}
