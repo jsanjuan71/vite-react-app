@@ -16,6 +16,8 @@ function ProductosBs() {
                 setListaProductos(data.products)
             })
     }, [])
+
+
     return (
         <Container>
             <Menu />

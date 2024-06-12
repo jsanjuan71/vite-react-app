@@ -19,23 +19,29 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Catalogo from './components/pages/catalogo'
 import Carrito from './components/pages/carrito'
 
-function App() {
+import CarritoState from './tools/carrito.state'
+
+
+function App() 
+{
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path='/' element={ <Home /> } />
-        <Route path='/contacto' element={ <Contacto /> } />
-        <Route path='/nosotros' element={ <Nosotros /> } />
-        <Route path='/productos' element={ <ProductosBs /> } />
-        <Route path='/productos/:sku' element={ <DetalleProducto /> } />
-        <Route path='/lista' element={ <ListaDeTareas /> } />
-        <Route path='/lista/:id' element={ <DetalleTarea /> } />
-        <Route path='/tareas' element={ <ListaTareas /> } />
-        <Route path='/catalogo' element={ <Catalogo /> } />
-        <Route path='/carrito' element={ <Carrito /> } />
-        <Route path='*' element={ <NotFound /> } />
-      </Routes>
-    </BrowserRouter>
+    <CarritoState>
+      <BrowserRouter>
+        <Routes>
+          <Route path='/' element={ <Home /> } />
+          <Route path='/contacto' element={ <Contacto /> } />
+          <Route path='/nosotros' element={ <Nosotros /> } />
+          <Route path='/productos' element={ <ProductosBs /> } />
+          <Route path='/productos/:sku' element={ <DetalleProducto /> } />
+          <Route path='/lista' element={ <ListaDeTareas /> } />
+          <Route path='/lista/:id' element={ <DetalleTarea /> } />
+          <Route path='/tareas' element={ <ListaTareas /> } />
+          <Route path='/catalogo' element={ <Catalogo /> } />
+          <Route path='/carrito' element={ <Carrito /> } />
+          <Route path='*' element={ <NotFound /> } />
+        </Routes>
+      </BrowserRouter>
+    </CarritoState>
   )
 }
 

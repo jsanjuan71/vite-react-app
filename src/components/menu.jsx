@@ -1,8 +1,14 @@
 import {Link} from 'react-router-dom';
 import './menu.css'
 import { Cart } from 'react-bootstrap-icons';
+import { useContext } from 'react';
+import CarritoContext from '../tools/carrito.context';
+import { Badge } from 'react-bootstrap';
+
 
 function Menu() {
+
+    const ctx = useContext(CarritoContext)
 
     return (
         <nav>
@@ -19,7 +25,9 @@ function Menu() {
                     <Link to={"/catalogo"}>Tienda</Link>
                 </li>
                 <li>
-                    <Link to={"/carrito"}>Carrito<Cart/></Link>
+                    <Link to={"/carrito"}>
+                        <Badge><Cart/> {ctx.productos.length}</Badge>
+                    </Link>
                 </li>
 
                 <li>

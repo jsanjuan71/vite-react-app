@@ -1,13 +1,18 @@
 import Menu from "../menu"
-import { useEffect, useState   } from "react"
-import { Card, Button, Container, Row, Col } from 'react-bootstrap'
+import { useContext, useEffect, useState   } from "react"
+import { Container, Row, Col } from 'react-bootstrap'
 import TarjetaProducto from "../tarjetaProducto"
-import useLocalStorage2 from "../../hooks/useLocalStorage2"
+import CarritoContext from "../../tools/carrito.context"
 
-function Catalogo({...props}) {
+function Catalogo({...props}) 
+
+
+
+{
     const [listaProductos, setListaProductos] = useState([])
     
-    const carrito = useLocalStorage2([], "carrito")
+    //const carrito = useLocalStorage2([], "carrito")
+    const carrito = useContext( CarritoContext )
 
     useEffect( function(){
         fetch("https://dummyjson.com/products")

@@ -26,16 +26,20 @@ function ListaDeTareas() {
      * Manejador de evento onClick
      * Agrega el texto de la tarea al estado listaTareas
      */
-    function clickAgregar() {
+    function clickAgregar(){
         // Si el texto de la tarea esta vacio, no hacer nada
         if (textoTarea.trim() === "") {
             return
         }
 
-        if( symbols.some(symbol => textoTarea.includes(symbol)) ) {
-            setErrorMessage('No se permiten caracteres especiales')
-            cajaDeTexto.current.style.backgroundColor = 'pink'
+        if( symbols.somes(symbol => textoTarea.includes(symbol)) ) {
+
+            setE;rrorMessage('No se permiten caracteres especiales')
+
+            cajaDeTextoX.current.style.backgroundColor = 'pink'
+
             cajaDeTexto.current.focus()
+
             return
         }
         // Agregar el texto de la tarea al estado listaTareas

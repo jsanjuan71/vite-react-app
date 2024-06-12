@@ -6,9 +6,16 @@ module.exports = {
     'plugin:react/recommended',
     'plugin:react/jsx-runtime',
     'plugin:react-hooks/recommended',
+    "plugin:prettier/recommended",
+    "prettier"
   ],
   ignorePatterns: ['dist', '.eslintrc.cjs'],
-  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
+  parserOptions: { 
+    ecmaVersion: 'latest', 
+    sourceType: 'module',
+    project: ['./tsconfig.json', './tsconfig.node.json'],
+    tsconfigRootDir: __dirname
+  },
   settings: { react: { version: '18.2' } },
   plugins: ['react-refresh'],
   rules: {
