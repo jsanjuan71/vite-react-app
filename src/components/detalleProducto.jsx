@@ -1,25 +1,24 @@
-import { useParams } from 'react-router-dom' //HOOK
-import Menu from './menu'
-
+import { useParams } from 'react-router-dom'; //HOOK
+import Menu from './menu';
 
 const detalleProducto = {
     huevo: {
         sku: 'huevo',
         nombre: 'Huevo',
-        descripcion: "Huevo blanco de gallina",
-        precio: 10
+        descripcion: 'Huevo blanco de gallina',
+        precio: 10,
     },
     leche: {
         sku: 'leche',
         nombre: 'Leche Santa Clara',
-        descripcion: "leche entera 1L Santa Clara",
-        precio: 20
+        descripcion: 'leche entera 1L Santa Clara',
+        precio: 20,
     },
-}
+};
 
 function DetalleProducto() {
-    const {sku} = useParams()
-    const producto = detalleProducto[sku]
+    const { sku } = useParams();
+    const producto = detalleProducto[sku];
     return (
         <>
             <Menu />
@@ -29,7 +28,7 @@ function DetalleProducto() {
             <p>{producto.descripcion}</p>
             <p>${producto.precio}</p>
         </>
-    )
+    );
 }
 
 export default DetalleProducto;

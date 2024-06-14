@@ -1,4 +1,4 @@
-import Menu from "../menu"
+import Menu from '../menu';
 
 function NotFound() {
     return (
@@ -6,7 +6,7 @@ function NotFound() {
             <Menu />
             <h1>404 | La pagina no existe</h1>
         </>
-    )
+    );
 }
 
-export default NotFound
+export default NotFound;
