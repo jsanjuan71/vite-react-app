@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom';
 import Menu from '../menu';
 
-function Home() {
+function Home(props) {
     return (
         <>
-            <Menu />
+            <Menu carrito={props.carrito} />
             <h1>Home Page</h1>
         </>
     );

@@ -1,6 +1,6 @@
 import Menu from '../menu';
 import { useContext, useEffect, useState } from 'react';
-import { Container, Row, Col } from 'react-bootstrap';
+import { Container, Row, Col, Button } from 'react-bootstrap';
 import TarjetaProducto from '../tarjetaProducto';
 import CarritoContext from '../../tools/carrito.context';
 
@@ -32,6 +32,8 @@ function Catalogo({ ...props }) {
                                 className="h-100"
                                 clickAgregar={carrito.agregar}
                             />
+                            <Button onClick={carrito.eliminar}>
+                            </Button>
                         </Col>
                     );
                 })}

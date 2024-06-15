@@ -16,7 +16,7 @@ function ListaDeTareas() {
     // La funcion para actualizar el estado se llama setTextoTarea
     const [textoTarea, setTextoTarea] = useState('');
 
-    const [errorMessage, setErrorMessage] = useState('');
+    const [errorMessage, setErrorMessage] = useState('')
 
     const cajaDeTexto = useRef(null);
 
@@ -50,8 +50,8 @@ function ListaDeTareas() {
         ',',
         '.',
         '?',
-        '/,
-        ' ','
+        '/',
+        ' ',
     ];
 
     /**
@@ -70,7 +70,7 @@ function ListaDeTareas() {
 
             cajaDeTextoX.current.style.backgroundColor = 'pink';
 
-            cajaDeTexto.current.focus();
+            cajaDeTexto.current.focus()
 
             return;
         }

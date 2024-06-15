@@ -5,8 +5,11 @@ import { useContext } from 'react';
 import CarritoContext from '../tools/carrito.context';
 import { Badge } from 'react-bootstrap';
 
-function Menu() {
-    const ctx = useContext(CarritoContext);
+function Menu(props) {
+    const ctx = props.carrito
+
+
+    props.carrito = 10
 
     return (
         <nav>
@@ -28,6 +31,10 @@ function Menu() {
                             <Cart /> {ctx.productos.length}
                         </Badge>
                     </Link>
+                </li>
+
+                <li>
+                    <Link to="/checkout">Pagar</Link>
                 </li>
 
                 <li>

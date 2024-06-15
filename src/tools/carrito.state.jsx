@@ -14,6 +14,7 @@ const CarritoState = (props) => {
             value={{
                 productos: initialState.productos,
                 agregar: storage.agregar,
+                eliminar: () => {}
             }}
         >
             {props.children}

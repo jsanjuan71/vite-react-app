@@ -20,13 +20,15 @@ import Catalogo from './components/pages/catalogo';
 import Carrito from './components/pages/carrito';
 
 import CarritoState from './tools/carrito.state';
+import Checkout from './components/pages/checkout';
 
 function App() {
+    const cart = useState([])
     return (
         <CarritoState>
             <BrowserRouter>
                 <Routes>
-                    <Route path="/" element={<Home />} />
+                    <Route path="/" element={<Home carrito={cart} />} />
                     <Route path="/contacto" element={<Contacto />} />
                     <Route path="/nosotros" element={<Nosotros />} />
                     <Route path="/productos" element={<ProductosBs />} />
@@ -36,6 +38,7 @@ function App() {
                     <Route path="/tareas" element={<ListaTareas />} />
                     <Route path="/catalogo" element={<Catalogo />} />
                     <Route path="/carrito" element={<Carrito />} />
+                    <Route path='/checkout' element={ <Checkout /> } />
                     <Route path="*" element={<NotFound />} />
                 </Routes>
             </BrowserRouter>
