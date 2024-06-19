@@ -3,6 +3,7 @@ import { useContext, useEffect, useState } from 'react';
 import { Container, Row, Col, Button } from 'react-bootstrap';
 import TarjetaProducto from '../tarjetaProducto';
 import CarritoContext from '../../tools/carrito.context';
+import axios from 'axios';
 
 function Catalogo({ ...props }) {
     const [listaProductos, setListaProductos] = useState([]);
@@ -11,12 +12,20 @@ function Catalogo({ ...props }) {
     const carrito = useContext(CarritoContext);
 
     useEffect(function () {
-        fetch('https://dummyjson.com/products')
+        axios.get(process.env.REACT_APP_BACKEND_URL)
+            .then(response => {
+                console.log("EXITO", response)
+                setListaProductos(response.data);
+            })
+            .catch(error => {
+                console.error( "FALLA", error )
+            })
+        /*fetch('https://dummyjson.com/products')
             .then((response) => response.json())
             .then((data) => {
                 console.log('DATA', data);
                 setListaProductos(data.products);
-            });
+            }); */
     }, []);
 
     return (

@@ -3,17 +3,17 @@ import { Button, Card } from 'react-bootstrap';
 function TarjetaProducto({ producto, ...props }) {
     return (
         <Card className="d-flex flex-column">
-            <Card.Img variant="top" src={producto.thumbnail} />
+            <Card.Img variant="top" src={producto.portada} />
             <Card.Body className="flex-grow-1">
                 <Card.Title>
-                    {producto.title}
+                    {producto.titulo}
                     <br />
-                    <sub className="text-muted">{producto.brand}</sub>
+                    <sub className="text-muted">{producto.marca}</sub>
                 </Card.Title>
-                <Card.Text>{producto.description}</Card.Text>
+                <Card.Text>{producto.descripcion}</Card.Text>
             </Card.Body>
             <Card.Footer>
-                <label className="text-success"> ${producto.price}</label>
+                <label className="text-success"> ${producto.precio}</label>
                 <br />
                 <Button variant="primary" onClick={() => props.clickAgregar(producto)}>
                     Agregar
