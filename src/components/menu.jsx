@@ -6,10 +6,7 @@ import CarritoContext from '../tools/carrito.context';
 import { Badge } from 'react-bootstrap';
 
 function Menu(props) {
-    const ctx = props.carrito
-
-
-    props.carrito = 10
+    const ctx = useContext( CarritoContext )
 
     return (
         <nav>
