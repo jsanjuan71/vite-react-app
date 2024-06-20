@@ -4,15 +4,17 @@ import { Container, Row, Col, Button } from 'react-bootstrap';
 import TarjetaProducto from '../tarjetaProducto';
 import CarritoContext from '../../tools/carrito.context';
 import axios from 'axios';
+import CrearProductoModal from '../crearProductoModal';
 
 function Catalogo({ ...props }) {
     const [listaProductos, setListaProductos] = useState([]);
+    const [modalShow, setModalShow] = useState(true);
 
     //const carrito = useLocalStorage2([], "carrito")
     const carrito = useContext(CarritoContext);
 
     useEffect(function () {
-        axios.get(process.env.REACT_APP_BACKEND_URL)
+        axios.get(process.env.REACT_APP_BACKEND_URL + '/productos')
             .then(response => {
                 console.log("EXITO", response)
                 setListaProductos(response.data);
@@ -28,10 +30,37 @@ function Catalogo({ ...props }) {
             }); */
     }, []);
 
+    const guardarProducto = (formProducto) => {
+        console.log("GUARDAR", formProducto);
+        const config = {
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            }
+        }
+        axios.post(process.env.REACT_APP_BACKEND_URL + "/productos", formProducto, config)
+            .then(response => {
+                console.log("EXITO", response)
+                setListaProductos([...listaProductos, response.data]);
+            })
+            .catch(error => {
+                console.error( "FALLA", error )
+            })
+    }
+
     return (
         <Container>
             <Menu />
             <h1>Bienvenido al Catálogo</h1>
+            <CrearProductoModal show={modalShow} 
+                onHide={() => setModalShow(false)} 
+                onSave={guardarProducto}
+            />
+            <Row>
+                <Col>
+                    <Button className='btn btn-primary' onClick={()=> setModalShow(true)}>Crear producto</Button>
+                </Col>
+            </Row>
+            <hr />
             <Row>
                 {listaProductos.map((producto, indice) => {
                     return (
