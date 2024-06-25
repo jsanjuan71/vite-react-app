@@ -14,10 +14,6 @@ function CrearProductoModal({onHide, onSave, ...props }) {
         const formData = new FormData(formRef.current);
         // Llamar a la función onSave con los datos del formulario
         onSave(formData)
-        // Limpiar el formulario
-        formRef.current.reset()
-        // Cerrar el modal
-        onHide()
     }
 
     return (
@@ -27,7 +23,7 @@ function CrearProductoModal({onHide, onSave, ...props }) {
         aria-labelledby="contained-modal-title-vcenter"
         centered
       >
-        <Modal.Header closeButton>
+        <Modal.Header closeButton onClick={onHide}>
           <Modal.Title id="contained-modal-title-vcenter">
             Nuevo producto
           </Modal.Title>
@@ -38,6 +34,10 @@ function CrearProductoModal({onHide, onSave, ...props }) {
                 <Form.Group className="mb-3" controlId="titulo">
                     <Form.Label>Título</Form.Label>
                     <Form.Control type="text" placeholder="Nombre del producto" name="titulo" minLength={5} />
+                </Form.Group>
+                <Form.Group className="mb-3" controlId="marca">
+                    <Form.Label>Marca</Form.Label>
+                    <Form.Control type="text" placeholder="Marca o línea" name="marca" minLength={5} />
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="descripcion">
                     <Form.Label>Descripción</Form.Label>

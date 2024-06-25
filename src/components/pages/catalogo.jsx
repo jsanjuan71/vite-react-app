@@ -8,7 +8,7 @@ import CrearProductoModal from '../crearProductoModal';
 
 function Catalogo({ ...props }) {
     const [listaProductos, setListaProductos] = useState([]);
-    const [modalShow, setModalShow] = useState(true);
+    const [modalShow, setModalShow] = useState(false);
 
     //const carrito = useLocalStorage2([], "carrito")
     const carrito = useContext(CarritoContext);
@@ -31,18 +31,22 @@ function Catalogo({ ...props }) {
     }, []);
 
     const guardarProducto = (formProducto) => {
-        console.log("GUARDAR", formProducto);
+        // cuando se envia un archivo se debe enviar un objeto FormData
         const config = {
             headers: {
                 'Content-Type': 'multipart/form-data'
             }
         }
+        // axios.post(url, datos, configuracion)
         axios.post(process.env.REACT_APP_BACKEND_URL + "/productos", formProducto, config)
             .then(response => {
-                console.log("EXITO", response)
-                setListaProductos([...listaProductos, response.data]);
+                // Si la petición fue exitosa, se actualiza la lista de productos y se cierra el modal
+                setModalShow(false);
+                setListaProductos(response.data);
             })
             .catch(error => {
+                // Si la petición falla, se muestra un mensaje en la consola
+                // falta mostrar un mensaje al usuario
                 console.error( "FALLA", error )
             })
     }
@@ -51,6 +55,7 @@ function Catalogo({ ...props }) {
         <Container>
             <Menu />
             <h1>Bienvenido al Catálogo</h1>
+            {/** Se agrega el modal para crear el producto */}
             <CrearProductoModal show={modalShow} 
                 onHide={() => setModalShow(false)} 
                 onSave={guardarProducto}
