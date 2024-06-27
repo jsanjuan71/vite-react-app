@@ -3,6 +3,8 @@ import { Form, Button } from "react-bootstrap";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { API_SERVER, USUARIOS_PATH } from "../../constants/api-endpoints";
+import messages from "../../constants/messages-es";
 
 function Register() {
     const redirect = useNavigate();
@@ -29,7 +31,7 @@ function Register() {
       }*/
 
       // Invocamos a la API para guardar el usuario con data como cuerpo de la petición
-      axios.post(process.env.REACT_APP_BACKEND_URL + '/usuarios', data)
+      axios.post( API_SERVER + USUARIOS_PATH, data)
         .then(response => {
           console.log("EXITO", response.data)
           // Mostrar un mensaje al usuario de que el registro fue exitoso
@@ -46,27 +48,27 @@ function Register() {
 
     return (
       <div>
-        <h1>Register</h1>
+        <h1>{ messages.register.title }</h1>
         <Form ref={formulario} onSubmit={handleSubmit}>
           <Form.Group className="mb-3" controlId="email">
-            <Form.Label>Nombre</Form.Label>
+            <Form.Label>{ messages.register.form.name }</Form.Label>
             <Form.Control type="text" placeholder="Teclea tu nombre" name="nombre" minLength={5} />
           </Form.Group>
 
           <Form.Group className="mb-3" controlId="email">
-            <Form.Label>Correo</Form.Label>
+            <Form.Label>{ messages.register.form.email }</Form.Label>
             <Form.Control type="email" placeholder="Teclea tu correo" name="correo" />
           </Form.Group>
 
           <Form.Group className="mb-3" controlId="email">
-            <Form.Label>Contraseña</Form.Label>
+            <Form.Label>{ messages.register.form.password }</Form.Label>
             <Form.Control type="password" placeholder="Teclea tu correo" name="contrasena" />
           </Form.Group>
 
-          <Button type="submit" variant="success">Guardar</Button>
+          <Button type="submit" variant="success">{ messages.register.form.submit }</Button>
         </Form>
         <hr />
-        <p>Ya tiene una cuenta? <Link to={"/"}>Ingresar</Link></p>
+        <p>{ messages.register.already } <Link to={"/"}>{ messages.login.title }</Link></p>
       </div>
     );
 }
