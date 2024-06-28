@@ -31,8 +31,15 @@ function useLocalStorage2(valorInicial, clave) {
         setAlmacenamiento([...almacenamiento, elemento]);
     }
 
+    function actualizar(elemento) {
+        console.log("ACTUALIZAR", elemento)
+        // actualizar el local storage con el nuevo elemento
+        localStorage.setItem( clave, JSON.stringify(elemento) );
+        setAlmacenamiento(elemento);
+    }
+
     // retornar el almacenamiento y la funcion agregar
-    return { almacenamiento, agregar };
+    return { almacenamiento, agregar, actualizar };
 }
 
 export default useLocalStorage2;

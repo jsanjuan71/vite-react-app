@@ -1,14 +1,19 @@
-import { useRef } from "react";
+import { useContext, useRef, useEffect } from "react";
 import { Form, Button } from "react-bootstrap";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { API_SERVER, LOGIN_PATH } from "../../constants/api-endpoints";
 import messages from "../../constants/messages-es";
+import AuthContext from "../../tools/auth.context";
 
 function Login() {
     const redirect = useNavigate();
     const formulario = useRef();
+
+    const authState = useContext( AuthContext )
+
+
 
     const handleSubmit = (event) => {
       // Evitar que el formulario recargue la página
@@ -35,6 +40,8 @@ function Login() {
           console.log("EXITO", response.data)
           // Mostrar un mensaje al usuario de que el registro fue exitoso
           toast.success( messages.login.success )
+            // Actualizar el estado de autenticación con el token que se obtiene de la respuesta
+          authState.set( {token: response.data.result } )
           // Si la petición fue exitosa, se redirige al usuario a la página de login después de 5 segundos
           setTimeout(redirect, 5000, '/home')
         })
@@ -44,6 +51,13 @@ function Login() {
           toast.error( messages.login.failed )
         })
     }
+
+    useEffect(() => {
+        if (authState.auth.token) {
+            redirect("/home")
+        }
+    }, [authState.auth.token])
+
     return (
       <div>
         <h1>{messages.login.title}</h1>
