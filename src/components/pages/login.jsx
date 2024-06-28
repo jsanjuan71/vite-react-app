@@ -47,7 +47,6 @@ function Login() {
 
     useEffect(() => {
         if (authCtx.auth.token) {
-            toast.success("Ya existe una sesión activa")
             redirect('/home')
         }
     }, [authCtx.auth.token]);

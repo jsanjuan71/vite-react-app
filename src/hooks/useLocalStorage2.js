@@ -33,6 +33,7 @@ function useLocalStorage2(valorInicial, clave) {
 
     function reemplazar(nuevoValor) {
         localStorage.setItem(clave, JSON.stringify(nuevoValor));
+        setAlmacenamiento(nuevoValor);
     }
 
     // retornar el almacenamiento y la funcion agregar
