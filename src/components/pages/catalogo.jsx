@@ -5,16 +5,21 @@ import TarjetaProducto from '../tarjetaProducto';
 import CarritoContext from '../../tools/carrito.context';
 import axios from 'axios';
 import CrearProductoModal from '../crearProductoModal';
+import AuthContext from '../../tools/auth.context';
 
 function Catalogo({ ...props }) {
     const [listaProductos, setListaProductos] = useState([]);
     const [modalShow, setModalShow] = useState(false);
-
-    //const carrito = useLocalStorage2([], "carrito")
     const carrito = useContext(CarritoContext);
+    const authCtx = useContext( AuthContext )
 
     useEffect(function () {
-        axios.get(process.env.REACT_APP_BACKEND_URL + '/productos')
+        const config = {
+            headers: {
+                'Authorization': 'Bearer ' + authCtx.auth.token,
+            }
+        }
+        axios.get(process.env.REACT_APP_BACKEND_URL + '/productos', config)
             .then(response => {
                 console.log("EXITO", response)
                 setListaProductos(response.data);
@@ -22,12 +27,6 @@ function Catalogo({ ...props }) {
             .catch(error => {
                 console.error( "FALLA", error )
             })
-        /*fetch('https://dummyjson.com/products')
-            .then((response) => response.json())
-            .then((data) => {
-                console.log('DATA', data);
-                setListaProductos(data.products);
-            }); */
     }, []);
 
     const guardarProducto = (formProducto) => {

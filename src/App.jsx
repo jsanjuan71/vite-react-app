@@ -25,6 +25,7 @@ import Login from './components/pages/login';
 import Register from './components/pages/register';
 import Profile from './components/pages/profile';
 import Toastify from './components/toastify';
+import AuthState from './tools/auth.state';
 
 function App() {
     const cart = useState([])
@@ -32,24 +33,27 @@ function App() {
         <>
             <Toastify />
             <CarritoState>
-                <BrowserRouter>
-                    <Routes>
-                        <Route path="/" element={<Login />} />
-                        <Route path='/register' element={<Register />} />
-                        <Route path="/profile" element={<Profile />} />
-                        <Route path="/contacto" element={<Contacto />} />
-                        <Route path="/nosotros" element={<Nosotros />} />
-                        <Route path="/productos" element={<ProductosBs />} />
-                        <Route path="/productos/:sku" element={<DetalleProducto />} />
-                        <Route path="/lista" element={<ListaDeTareas />} />
-                        <Route path="/lista/:id" element={<DetalleTarea />} />
-                        <Route path="/tareas" element={<ListaTareas />} />
-                        <Route path="/catalogo" element={<Catalogo />} />
-                        <Route path="/carrito" element={<Carrito />} />
-                        <Route path='/checkout' element={ <Checkout /> } />
-                        <Route path="*" element={<NotFound />} />
-                    </Routes>
-                </BrowserRouter>
+                <AuthState>
+                    <BrowserRouter>
+                        <Routes>
+                            <Route path="/" element={<Login />} />
+                            <Route path="/home" element={<Home />} />
+                            <Route path='/register' element={<Register />} />
+                            <Route path="/profile" element={<Profile />} />
+                            <Route path="/contacto" element={<Contacto />} />
+                            <Route path="/nosotros" element={<Nosotros />} />
+                            <Route path="/productos" element={<ProductosBs />} />
+                            <Route path="/productos/:sku" element={<DetalleProducto />} />
+                            <Route path="/lista" element={<ListaDeTareas />} />
+                            <Route path="/lista/:id" element={<DetalleTarea />} />
+                            <Route path="/tareas" element={<ListaTareas />} />
+                            <Route path="/catalogo" element={<Catalogo />} />
+                            <Route path="/carrito" element={<Carrito />} />
+                            <Route path='/checkout' element={ <Checkout /> } />
+                            <Route path="*" element={<NotFound />} />
+                        </Routes>
+                    </BrowserRouter>
+                </AuthState>
             </CarritoState>
         </>
     );

@@ -4,9 +4,11 @@ import { Cart } from 'react-bootstrap-icons';
 import { useContext } from 'react';
 import CarritoContext from '../tools/carrito.context';
 import { Badge } from 'react-bootstrap';
+import AuthContext from '../tools/auth.context';
 
 function Menu(props) {
     const ctx = useContext( CarritoContext )
+    const authCtx = useContext( AuthContext )
 
     return (
         <nav>
@@ -36,6 +38,10 @@ function Menu(props) {
 
                 <li>
                     <Link to={'/contacto'}>Contactanos</Link>
+                </li>
+
+                <li onClick={authCtx.reset}>
+                    <Link to="/">Salir</Link>
                 </li>
             </ul>
         </nav>
